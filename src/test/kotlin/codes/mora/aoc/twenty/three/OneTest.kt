@@ -12,6 +12,6 @@ class OneTest {
 
     @Test
     fun two() {
-        assertEquals(1, One().two())
+        assertEquals(54094, One().two())
     }
 }
