@@ -7,7 +7,7 @@ class OneTest {
 
     @Test
     fun one() {
-        assertEquals(1, One().one())
+        assertEquals(54968, One().one())
     }
 
     @Test
