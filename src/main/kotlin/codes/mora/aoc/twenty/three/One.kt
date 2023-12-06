@@ -1,10 +1,11 @@
 package codes.mora.aoc.twenty.three
 
 import codes.mora.aoc.Task
+import codes.mora.aoc.WithOverwrite
 import codes.mora.aoc.utils.InputDelegate
 
-class One : Task<Int> {
-    override val input: List<String> by InputDelegate()
+class One(override val overwrite: List<String>? = null) : Task<Int>, WithOverwrite {
+    override val input: List<String> by InputDelegate(overwrite)
 
     override fun one() = input.sumOfCalibrationValue()
     override fun two() = input
