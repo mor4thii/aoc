@@ -19,6 +19,12 @@ class Two(override val overwrite: List<String>? = null) : Task<Int>, WithOverwri
         }
         .sumOf { it }
 
+    override fun two() = input
+        .map { removeGamePrefix(it) }
+        .map { groupCubesPerGameByColor(it) }
+        .map { extractNeededAmountPerColor(it) }
+        .sumOf { power(it) }
+
     private fun removeGamePrefix(it: String) = it.substringAfter(": ").trim()
 
     private fun splitGameSetsAndMapColorToCubes(game: String) =
@@ -36,7 +42,13 @@ class Two(override val overwrite: List<String>? = null) : Task<Int>, WithOverwri
         else -> false
     }
 
-    override fun two() = input.sumOf { it.toIntOrNull() ?: 0 }
+    private fun groupCubesPerGameByColor(game: String) =
+        game.split("; ", ", ").map { cubes -> cubes(cubes) }.groupBy({ it.first }, { it.second })
+
+    private fun extractNeededAmountPerColor(set: Map<String, List<Int>>) =
+        set.entries.map { it.value.max() }
+
+    private fun power(it: List<Int>) = it.reduce { acc, cubes -> acc * cubes }
 
     companion object {
         const val MAX_RED = 12
