@@ -17,7 +17,7 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green""".lines()
 
     @Test
     fun one() {
-        assertEquals(0, Two().one())
+        assertEquals(2085, Two().one())
     }
 
     @Test
