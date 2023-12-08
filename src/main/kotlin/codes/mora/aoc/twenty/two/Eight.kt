@@ -8,7 +8,7 @@ import kotlin.math.max
 class Eight(override val overwrite: List<String>? = null) : Task<Int>, WithOverwrite {
     override val input: List<String> by InputDelegate(overwrite)
 
-    val parsedInput = input.map { it.map(Char::digitToInt) }
+    private val parsedInput = input.map { it.map(Char::digitToInt) }
 
     override fun one() = treesSeenFromTheOutside(parsedInput)
 
